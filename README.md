@@ -7,27 +7,28 @@
 仅仅是个人用于记录力扣时间的计时器
 
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
-未知
+UNKNOW
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `leetcode-timer.customSetting`: 监控的路径名称.
-* `botApiSetting`: telegram bot API.
+* `leetcode-timer.customSetting`: the folder path where your code is in(non recursive).
+* `botOn`: Whether or not using telegram bot.
+* `botApiSetting`: telegram bot API token.
+* `botGroupId`: the group id where you want to to send messages to.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+UNKOWN
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 0.0.1
 
 Initial release of leetcode-timer
