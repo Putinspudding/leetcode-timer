@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import * as https from 'https';
 //import * as fs from 'fs';
 import * as path from 'path';
-import { Http2ServerRequest } from 'http2';
+//import { Http2ServerRequest } from 'http2';
 
 interface Problem {
 	title: string;
@@ -28,11 +28,20 @@ export async function activate(context: vscode.ExtensionContext) {
 	const uri = context.globalStorageUri;
 	const config = vscode.workspace.getConfiguration('leetcode-timer');
 	const customPath = config.get('customSetting') as string;
+	const botConfig = config.get('botOn');
+	//console.log(botConfig);
 	const api = config.get('botApiSetting');
+	const groupId = config.get('botGroupId');
+	//console.log(uri);
+
 
 	function makeApiRequest(message: string) {
+		if (!botConfig) {
+			vscode.window.showInformationMessage('Bot is default off, please configure in settings first.');
+		}
 		const baseUrl = "https://api.telegram.org/bot" + api;
-		const fullUrl = baseUrl + "/sendMessage?chat_id=" + "-1001317411526&text=" + message;
+		const fullUrl = baseUrl + "/sendMessage?chat_id=" + groupId + "&text=" + message;
+		//vscode.window.showInformationMessage(fullUrl);
 		https.get(fullUrl, (response) => { });
 	}
 
@@ -140,6 +149,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	//console.log(customPath);
 	let disposable = vscode.workspace.onDidOpenTextDocument(async (document: vscode.TextDocument) => {
+		//vscode.window.showInformationMessage(uri.fsPath);
 		if (document.isUntitled) {
 		} else {
 			let fileName = document.fileName;
@@ -195,7 +205,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 					sendMessage(fileRelativeName, elapsedTimeString);
 				}
-				vscode.window.showInformationMessage('File saved with "// done" at the end!');
+				//vscode.window.showInformationMessage('File saved with "// done" at the end!');
 			}
 		}
 	});

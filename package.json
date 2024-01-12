@@ -22,10 +22,20 @@
           "default": "/home/pwdding/codeforces/leetcode/",
           "description": "The watching folder"
         },
+        "leetcode-timer.botOn": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether use telegram bot"
+        },
         "leetcode-timer.botApiSetting": {
           "type": "string",
-          "default": "596743773:AAFpu5Sa8VpixYYay-KFenf0aALFi42J_eE",
+          "default": "",
           "description": "The telegram bot API"
+        },
+        "leetcode-timer.botGroupId": {
+          "type": "string",
+          "default": "",
+          "description": "The group ID you want to send messages to"
         }
       }
     },
